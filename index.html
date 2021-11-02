@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>Live</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <video
+      id="video"
+      style="width: 100%; max-width: 600px;"
+      controls
+      autoplay
+      muted
+    ></video>
+    <script>
+      var video = document.getElementById('video');
+      var videoSrc = '/hls/test.m3u8'; // 這邊表示要播放的對象是 Stream Key為`test`的
+      if (Hls.isSupported()) { // 檢查是否支援HLS
+        var hls = new Hls();
+        hls.loadSource(videoSrc);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function() {
+          video.muted = true;
+          video.play();
+        });
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = videoSrc;
+      }
+    </script>
+  </body>
+</html>
