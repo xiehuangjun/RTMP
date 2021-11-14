@@ -13,8 +13,8 @@
     ></video>
     <script>
       var video = document.getElementById('video');
-      var videoSrc = '/hls/test.m3u8'; // 這邊表示要播放的對象是 Stream Key為`test`的
-      if (Hls.isSupported()) { // 檢查是否支援HLS
+      var videoSrc = '/hls/test.m3u8'; // This means that the object to be played is the one whose Stream Key is `test`
+      if (Hls.isSupported()) { // Check whether support the HLS
         var hls = new Hls();
         hls.loadSource(videoSrc);
         hls.attachMedia(video);
